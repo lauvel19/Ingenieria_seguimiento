@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="combined-container">
+    <!-- Sección del Agente -->
+    <section class="agent-section">
+        <h2>Asistente IA</h2>
+        <div class="chat-box">
+            {% if agent %}
+                <div class="result-box result-success">
+                    <p>{{ agent }}</p>
+                </div>
+            {% endif %}
+
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" name="agent_input" class="form-control" placeholder="Pregúntame algo..." required>
+                </div>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sección de Herramientas -->
+    <section class="tools-section">
+        <!-- Razonamiento Deductivo -->
+        <div class="tool-card">
+            <h3>Razonamiento Deductivo</h3>
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" name="premise1" class="form-control" placeholder="Premisa 1" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="premise2" class="form-control" placeholder="Premisa 2" required>
+                </div>
+                <button type="submit" class="btn">Analizar</button>
+            </form>
+
+            {% if deductive %}
+                <div class="result-box {% if 'Error' in deductive or 'No hay' in deductive %}result-error{% else %}result-success{% endif %}">
+                    <p>{{ deductive }}</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Razonamiento Inductivo -->
+        <div class="tool-card">
+            <h3>Razonamiento Inductivo</h3>
+            <form method="POST">
+                {% for i in range(1, 4) %}
+                <div class="form-group">
+                    <input type="text" name="observation{{i}}" class="form-control"
+                           placeholder="Observación {{i}}" required>
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn">Generalizar</button>
+            </form>
+
+            {% if inductive %}
+                <div class="result-box {% if 'Error' in inductive or 'No se' in inductive %}result-error{% else %}result-success{% endif %}">
+                    <p>{{ inductive }}</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Solución de Problemas -->
+        <div class="tool-card">
+            <h3>Solución de Problemas</h3>
+            {% if problem %}
+                <div class="problem-info">
+                    <h4>{{ problem.description }}</h4>
+                    <ol class="steps-list">
+                        {% for step in problem.steps %}
+                            <li><strong>{{ step[0] }}:</strong> {{ step[1] }}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
+{% endblock %}

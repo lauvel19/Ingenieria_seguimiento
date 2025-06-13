@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Agente Inteligente</h1>
+    <form method="POST">
+        <label for="user_input">Interactúa con el agente:</label>
+        <input type="text" id="user_input" name="user_input"
+               placeholder="Ej: Di hola o 'mostrar información'" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    {% if agent_response %}
+        <div class="result">
+            <h3>Respuesta del Agente:</h3>
+            <p>{{ agent_response }}</p>
+        </div>
+    {% endif %}
+
+    <div class="capabilities">
+        <h3>Capacidades del Agente:</h3>
+        <ul>
+            <li>Responde a saludos (hola, hi, buenos días)</li>
+            <li>Reconoce comandos como 'mostrar información' o 'ayuda'</li>
+            <li>Proporciona respuestas contextuales</li>
+        </ul>
+
+        <h4>Ejemplos:</h4>
+        <p>"Hola" → "¡Hola! ¿En qué puedo ayudarte?"</p>
+        <p>"Mostrar información" → "Aquí tienes la información solicitada:"</p>
+    </div>
+    <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="yIobrXvKj5vSFdUKbE7rE";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="deductive-container">
+    <h1>Razonamiento Deductivo</h1>
+
+    <form method="POST" class="premises-form">
+        <div class="premise-input">
+            <label for="premise1">Premisa 1:</label>
+            <input type="text" id="premise1" name="premise1"
+                   value="{{ request.form.get('premise1', '') }}"
+                   placeholder="Ej: Todos los artistas son banqueros" required>
+        </div>
+
+        <div class="premise-input">
+            <label for="premise2">Premisa 2:</label>
+            <input type="text" id="premise2" name="premise2"
+                   value="{{ request.form.get('premise2', '') }}"
+                   placeholder="Ej: Todos los banqueros son cantantes" required>
+        </div>
+
+        <button type="submit" class="analyze-btn">Analizar</button>
+    </form>
+
+    {% if conclusion %}
+    <div class="result-box {% if 'Error' in conclusion or 'No hay' in conclusion %}error{% else %}success{% endif %}">
+        <h3>Resultado del Análisis:</h3>
+        <p>{{ conclusion }}</p>
+    </div>
+    {% endif %}
+
+    <div class="examples-box">
+        <h3>Ejemplos que sí funcionan:</h3>
+        <ul>
+            <li>
+                <strong>Premisa 1:</strong> Todos los humanos son mortales<br>
+                <strong>Premisa 2:</strong> Todos los mortales son vulnerables<br>
+                <strong>Conclusión:</strong> Todos los humanos son vulnerables
+            </li>
+            <li>
+                <strong>Premisa 1:</strong> Los pájaros son aves<br>
+                <strong>Premisa 2:</strong> Las aves tienen plumas<br>
+                <strong>Conclusión:</strong> Los pájaros tienen plumas
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

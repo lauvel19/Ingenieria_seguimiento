@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="inductive-container">
+    <h1>Razonamiento Inductivo</h1>
+
+    <form method="POST" class="observations-form">
+        <h3>Ingresa 3 observaciones similares:</h3>
+
+        {% for i in range(1, 4) %}
+        <div class="observation-input">
+            <label for="observation{{i}}">Observación {{i}}:</label>
+            <input type="text" id="observation{{i}}" name="observation{{i}}"
+                   value="{{ request.form.get('observation' + i|string, '') }}"
+                   placeholder="Ej: El cisne {{i}} es blanco" required>
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="generalize-btn">Generalizar</button>
+    </form>
+
+    {% if conclusion %}
+    <div class="result-box {% if 'Error' in conclusion or 'No se' in conclusion %}error{% else %}success{% endif %}">
+        <h3>Resultado:</h3>
+        <p>{{ conclusion }}</p>
+    </div>
+    {% endif %}
+
+    <div class="instructions-box">
+        <h3>Instrucciones:</h3>
+        <ol>
+            <li>Ingresa al menos 3 observaciones del mismo tipo</li>
+            <li>Deben compartir alguna característica común</li>
+            <li>Ejemplo válido:
+                <ul>
+                    <li>El cisne 1 es blanco</li>
+                    <li>El cisne 2 es blanco</li>
+                    <li>El cisne 3 es blanco</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+</div>
+{% endblock %}

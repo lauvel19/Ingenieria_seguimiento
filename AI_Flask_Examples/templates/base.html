@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplos de IA con Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}">Inicio</a>
+        <a href="{{ url_for('deductive') }}">Deductivo</a>
+        <a href="{{ url_for('inductive') }}">Inductivo</a>
+        <a href="{{ url_for('agent') }}">Agente</a>
+        <a href="{{ url_for('problem') }}">Representación</a>
+        <a href="{{ url_for('combined') }}">Combinado</a>
+    </nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

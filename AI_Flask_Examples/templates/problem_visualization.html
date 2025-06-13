@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="problem-card">
+    <div class="problem-header">
+      <h1><i class="fas fa-project-diagram"></i> Representación Visual de Problemas</h1>
+      <p>Entiende fácilmente cómo se resuelven los problemas paso a paso</p>
+    </div>
+
+    <div class="problem-body">
+      <!-- Problema Matemático -->
+      <section class="problem-section">
+        <h2><i class="fas fa-square-root-alt"></i> Problema Matemático</h2>
+        <p class="problem-description">Resolver la ecuación: <strong>2x + 5 = 15</strong></p>
+
+        <div class="step-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Restar 5 a ambos lados</h3>
+              <p>2x + 5 - 5 = 15 - 5</p>
+              <div class="visual-diagram">
+                <div>2x + 5 = 15</div>
+                <div class="flow-arrow">↓</div>
+                <div>2x = 10</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Dividir ambos lados por 2</h3>
+              <p>2x ÷ 2 = 10 ÷ 2</p>
+              <div class="visual-diagram">
+                <div>2x = 10</div>
+                <div class="flow-arrow">↓</div>
+                <div>x = 5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-box">
+          <h3><i class="fas fa-check-circle"></i> Solución Final:</h3>
+          <p class="final-solution">El valor de <strong>x es 5</strong></p>
+        </div>
+      </section>
+
+      <!-- Problema de Lógica -->
+      <section class="problem-section">
+        <h2><i class="fas fa-brain"></i> Problema de Lógica</h2>
+        <p class="problem-description">
+          Si todos los A son B y algunos B son C, ¿qué podemos concluir?
+        </p>
+
+        <div class="visual-diagram">
+          <img src="/static/images/logic-diagram.png" alt="Diagrama lógico" class="logic-img">
+        </div>
+
+        <div class="step-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Analizar primera premisa</h3>
+              <p>Todos los elementos del conjunto A están dentro del conjunto B</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Analizar segunda premisa</h3>
+              <p>Existe una intersección entre los conjuntos B y C</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Conclusión lógica</h3>
+              <p>Es posible que algunos elementos de A sean también C</p>
+              <div class="visual-diagram">
+                <div>A ∩ C ≠ ∅ (posible intersección)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Problema de Ruta -->
+      <section class="problem-section">
+        <h2><i class="fas fa-route"></i> Problema de Ruta Óptima</h2>
+        <p class="problem-description">Encontrar el camino más corto del punto A al punto D</p>
+
+        <div class="visual-diagram">
+          <div class="graph-representation">
+            <div class="graph-node">A</div>
+            <div class="graph-connections">
+              <div class="graph-line">5 km</div>
+              <div class="graph-line">3 km</div>
+            </div>
+            <div class="graph-mid-nodes">
+              <div class="graph-node">B</div>
+              <div class="graph-node">C</div>
+            </div>
+            <div class="graph-connections">
+              <div class="graph-line">4 km</div>
+              <div class="graph-line">2 km</div>
+            </div>
+            <div class="graph-node">D</div>
+          </div>
+        </div>
+
+        <div class="step-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Calcular posibles rutas</h3>
+              <ul class="route-options">
+                <li>A → B → D: 5 + 4 = 9 km</li>
+                <li>A → C → D: 3 + 2 = 5 km</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Comparar distancias</h3>
+              <p>La ruta A → C → D es más corta (5 km vs 9 km)</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Solución óptima</h3>
+              <p>Tomar la ruta <strong>A → C → D</strong> con 5 km de distancia total</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endblock %}
