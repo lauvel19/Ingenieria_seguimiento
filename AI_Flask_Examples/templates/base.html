@@ -1,20 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Ejemplos de IA con Flask</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de IA - Razonamiento Lógico{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('home') }}">Inicio</a>
-        <a href="{{ url_for('deductive') }}">Deductivo</a>
-        <a href="{{ url_for('inductive') }}">Inductivo</a>
-        <a href="{{ url_for('agent') }}">Agente</a>
-        <a href="{{ url_for('problem') }}">Representación</a>
-        <a href="{{ url_for('combined') }}">Combinado</a>
+        <div class="nav-brand">
+            <i class="fas fa-brain"></i>
+            <span>Sistema de IA</span>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Inicio</a>
+            <a href="{{ url_for('deductive') }}"><i class="fas fa-link"></i> Deductivo</a>
+            <a href="{{ url_for('inductive') }}"><i class="fas fa-search"></i> Inductivo</a>
+            <a href="{{ url_for('agent') }}"><i class="fas fa-robot"></i> Agente</a>
+            <a href="{{ url_for('problem') }}"><i class="fas fa-project-diagram"></i> Problemas</a>
+            <a href="{{ url_for('combined') }}"><i class="fas fa-layer-group"></i> Combinado</a>
+        </div>
     </nav>
+
     <div class="content">
-        {% block content %}{% endblock %}
+        {% block content %}
+        <!-- El contenido específico de cada página va aquí -->
+        <div class="welcome-section">
+            <h1>🧠 Bienvenido al Sistema de IA</h1>
+            <p>Explora el mundo del razonamiento lógico y la inteligencia artificial</p>
+            <div class="quick-links">
+                <a href="{{ url_for('deductive') }}" class="quick-link">
+                    <i class="fas fa-link"></i> Razonamiento Deductivo
+                </a>
+                <a href="{{ url_for('inductive') }}" class="quick-link">
+                    <i class="fas fa-search"></i> Razonamiento Inductivo
+                </a>
+                <a href="{{ url_for('agent') }}" class="quick-link">
+                    <i class="fas fa-robot"></i> Agente Inteligente
+                </a>
+                <a href="{{ url_for('problem') }}" class="quick-link">
+                    <i class="fas fa-project-diagram"></i> Resolución de Problemas
+                </a>
+            </div>
+        </div>
+        {% endblock %}
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <p><i class="fas fa-brain"></i> Sistema de IA - Fundamentos de Inteligencia Artificial</p>
+            <p>Explorando el razonamiento lógico y la resolución de problemas</p>
+        </div>
+    </footer>
+
+    <style>
+    /* Estilos adicionales para base.html */
+    .welcome-section {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 15px;
+        margin: 20px 0;
+    }
+
+    .welcome-section h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .welcome-section p {
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        opacity: 0.9;
+    }
+
+    .quick-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .quick-link {
+        background: rgba(255,255,255,0.1);
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .quick-link:hover {
+        background: rgba(255,255,255,0.2);
+        border-color: rgba(255,255,255,0.5);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .quick-link i {
+        font-size: 2em;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 10px;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #4361ee, #3f37c9);
+        color: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    nav a:hover {
+        background: rgba(255,255,255,0.1);
+    }
+
+    .content {
+        min-height: calc(100vh - 200px);
+        padding: 20px;
+    }
+
+    footer {
+        background: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    .footer-content p {
+        margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        nav {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quick-links {
+            grid-template-columns: 1fr;
+        }
+
+        .welcome-section h1 {
+            font-size: 2em;
+        }
+    }
+    </style>
 </body>
+    <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="yIobrXvKj5vSFdUKbE7rE";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
 </html>
